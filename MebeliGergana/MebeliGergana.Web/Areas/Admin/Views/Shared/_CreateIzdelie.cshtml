@@ -1,0 +1,66 @@
+﻿@using System.Drawing.Imaging
+@model ICollection<MebeliGergana.Models.ViewModels.SuppliersViewModel>
+
+
+<h2>Добави ново изделие</h2>
+@using (Html.BeginForm((string)ViewBag.Title, "Products", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+
+    <div class="form-group">
+        <label for="Name">Име</label>
+        <input class="form-control" type="text" name="Name" id="Name"  required="required"/>
+    </div>
+    <div class="form-group">
+        <label for="CatNomer">Каталожен номер</label>
+        <input type="text" class="form-control" id="CatNomer" name="CatNumber" />
+    </div>
+    <div class="form-group">
+        <label for="Color">Цвят</label>
+        <input type="text" class="form-control" id="Color" name="Color" required="required"/>
+    </div>
+    <div class="form-group">
+        <label for="Razmeri">Размери</label>
+        <input type="text" class="form-control" id="Razmeri" name="Razmeri" />
+    </div>
+    <div class="form-group">
+        <label for="Type">Вид</label>
+        <input type="text" class="form-control" id="Type" name="Type" />
+    </div>
+    <div class="form-group">
+        <label for="Suppliers">Доставчик</label>
+        <select class="form-control" id="Suppliers" name="SupplierId" required="required">
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Price">Цена</label>
+        <input type="number" class="form-control" id="Price" name="Price" required="required"/>
+    </div>
+    <div class="form-group">
+        <label for="Nalichnost">Наличност</label>
+        <input type="number" class="form-control" id="Nalichnost" name="NalichnostBr" />
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Описание</label>
+        <input type="text" class="form-control" id="Description" name="Description" />
+    </div>
+    <div class="form-group">
+        <label for="ImageName">Снимка</label>
+        <input type="file" class="form-control" name="ImageName" id="ImageName" />
+
+        @Html.ValidationMessage("ImageName", "Изберете jpg, png, pdf файл", new { @class = "text-danger" })
+        
+    </div>
+
+    <input type="submit" value="Добави" class="btn btn-success"  />
+    <button class="btn bg-info">@Html.ActionLink("Пропусни", "Index", "Operations")</button>
+
+}
+

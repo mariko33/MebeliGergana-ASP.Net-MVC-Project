@@ -1,0 +1,12 @@
+﻿@model ICollection<MebeliGergana.Models.ViewModels.SuppliersViewModel>
+    
+<div class="form-group">
+    <label for="Suppliers">Доставчик</label>
+    <select class="form-control" id="Suppliers" name="SupplierId">
+        @foreach (var item in Model)
+            {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+</div>
+

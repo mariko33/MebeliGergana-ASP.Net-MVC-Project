@@ -1,0 +1,56 @@
+﻿@using System.Drawing.Imaging
+@model ICollection<MebeliGergana.Models.ViewModels.SuppliersViewModel>
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Добави ново изделие</h2>
+@using (Html.BeginForm("Add","Izdeliq", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-group">
+    <label for="Name" >Име</label>
+    <input class="form-control" type="text" name="Name" id="Name"/>
+</div>
+<div class="form-group">
+    <label for="CatNomer" >Каталожен номер</label>
+    <input type="text" class="form-control" id="CatNomer" name="CatNumber"/>
+</div>
+<div class="form-group">
+    <label for="Color" >Цвят</label>
+    <input type="text" class="form-control" id="Color" name="Color"/>
+</div>
+<div class="form-group">
+    <label for="Razmeri" >Размери</label>
+    <input type="text" class="form-control" id="Razmeri" name="Razmeri"/>
+</div>
+<div class="form-group">
+    <label for="Type" >Вид</label>
+    <input type="text" class="form-control" id="Type" name="Type"/>
+</div>
+<div class="form-group">
+    <label for="Suppliers">Доставчик</label>
+    <select class="form-control" id="Suppliers" name="SupplierId">
+        @foreach (var item in Model)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+</div>
+<div class="form-group">
+    <label for="Price" >Цена</label>
+    <input type="number" class="form-control" id="Price" name="Price"/>
+</div>
+<div class="form-group">
+    <label for="Description" >Описание</label>
+    <input type="text" class="form-control" id="Description" name="Description"/>
+</div>
+    <div class="form-group">
+        <label for="ImageName" >Снимка</label>
+        <input type="file" class="form-control" name="ImageName"  id="ImageName"/>
+    </div>
+
+    <input type="submit" value="Добави" class="btn btn-success"/>
+    <button class="btn bg-info">"@Html.ActionLink("Пропусни","Index","Operations")"</button>
+
+}
+

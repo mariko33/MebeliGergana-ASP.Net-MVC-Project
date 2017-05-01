@@ -1,0 +1,20 @@
+﻿@using PagedList
+@using PagedList.Mvc;
+@model PagedList<MebeliGergana.Models.ViewModels.IzdeliqViewModel>
+@{
+    ViewBag.Title = "Spalni";
+}
+
+<h2 class="text-center">Спални</h2>
+
+@Html.Partial("_Izdeliq");
+
+@*@foreach (var item in @Model)
+{
+    <div class="col-lg-4">
+    <img src="data:image;base64,@System.Convert.ToBase64String(item.ImagePicture)" class="img-thumbnail"/>
+    @Html.DisplayFor(i=>item.Name)
+    @Html.HiddenFor(i=>item.Id)
+        </div>
+}*@
+

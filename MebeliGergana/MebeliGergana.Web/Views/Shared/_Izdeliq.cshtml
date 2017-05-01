@@ -1,0 +1,25 @@
+﻿@using PagedList
+@using PagedList.Mvc;
+@model PagedList<MebeliGergana.Models.ViewModels.IzdeliqViewModel>
+
+@foreach (var item in @Model)
+{
+
+    <div class="col-lg-4" id="izdeliq">
+        <img src="data:image;base64,@System.Convert.ToBase64String(item.ImagePicture)" class="img-thumbnail" id="izdeliqImg" />
+        @*@Html.DisplayFor(i => item.Name)*@
+
+        @Html.ActionLink(@item.Name,"Details","Izdeliq",new {id=item.Id,izdelie=(string)ViewBag.Title},new {@class="btn btn-info", id="izdelieBtn"}) 
+        
+        @Html.HiddenFor(i => item.Id)
+    </div>
+}
+
+<div class="col-sm-10">
+    <div class="text-center">
+        @Html.PagedListPager(Model,page=>Url.Action((string)ViewBag.Title,new {page, pageSize=Model.PageSize}))
+    </div>
+</div>
+
+
+

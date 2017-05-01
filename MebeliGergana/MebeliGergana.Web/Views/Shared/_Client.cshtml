@@ -1,0 +1,40 @@
+﻿@model MebeliGergana.Models.ViewModels.User.CurrentUserViewModel
+
+<h2>Информация за доставка</h2>
+
+@*@Html.HiddenFor(u=>u.Id,new {@name="clientId"})*@
+<input type="text" value="@Model.Id" hidden="hidden" name="ClientId" />
+<div class="form-horizontal">
+    @Html.LabelFor(u => u.FirstName,new {@class= "control-label" })
+    @Html.EditorFor(u => u.FirstName, new { htmlAttributes = new { @class = "form-control",id="FirstName"} })
+    @Html.ValidationMessageFor(u => u.FirstName, "Полето е задължително", new { @class = "text-danger" })
+
+</div>
+<div class="form-horizontal">
+    @Html.LabelFor(u => u.LastName, new { @class = "control-label" })
+    @Html.EditorFor(u => u.LastName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(u => u.LastName, "Полето е задължително", new { @class = "text-danger" })
+</div>
+<div class="form-horizontal">
+    @Html.LabelFor(u => u.Adress, new { @class = "control-label" })
+    @Html.EditorFor(u => u.Adress, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(u => u.Adress, "Полето е задължително", new { @class = "text-danger" })
+    
+</div>
+<div class="form-horizontal">
+    @Html.LabelFor(u => u.PhoneNumber, new { @class = "control-label" })
+    @Html.EditorFor(u => u.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(u => u.PhoneNumber, "Полето е задължително", new { @class = "text-danger" })
+    
+</div>
+<p>Начин на плащане - наложен платеж</p>
+
+
+<input type="submit" value="Потвърди" class="btn btn-success" />
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");
+}
+

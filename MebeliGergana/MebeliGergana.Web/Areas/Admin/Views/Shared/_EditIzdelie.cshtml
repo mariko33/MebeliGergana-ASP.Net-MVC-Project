@@ -1,0 +1,75 @@
+﻿@model MebeliGergana.Models.ViewModels.Admin.FullProductViewModel
+    
+
+<h2>Въведи необходимите промени</h2>
+
+@using (Html.BeginForm("EditSpalni", "Products", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-group" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(s => s.Id, new { @name = "Id" })
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Name)
+        @Html.EditorFor(s => s.Name, new { htmlAttributes = new { @name = "Name", @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.CatNumber)
+        @Html.EditorFor(s => s.CatNumber, new { htmlAttributes = new { @class = "form-control", @name = "CatNumber" } })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Color)
+        @Html.EditorFor(s => s.Color, new { htmlAttributes = new { @class = "form-control", @name = "Color" } })
+
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Description)
+        @Html.EditorFor(s => s.Description, new { htmlAttributes = new { @class = "form-control", @name = "Description" } })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Price)
+        @Html.EditorFor(s => s.Price, new { htmlAttributes = new { @class = "form-control", @name = "Price" } })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.NalichnostBr)
+        @Html.EditorFor(s => s.NalichnostBr, new { htmlAttributes = new { @class = "form-control", @name = "NalichnostBr" } })
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Razmeri)
+        @Html.EditorFor(s => s.Razmeri, new { htmlAttributes = new { @class = "form-control", @name = "Rameri" } })
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Type)
+        @Html.EditorFor(s => s.Type, new { htmlAttributes = new { @class = "form-control", @name = "Type" } })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Supplier)
+        @Html.EditorFor(s => s.Supplier.Name, new { htmlAttributes = new { @class = "form-control" } })
+        <input type="number" hidden="hidden" name="SupplierId" value="@Model.Supplier.Id" />
+    </div>
+
+    <div class="form-group">
+        <div>
+            @Html.DisplayNameFor(s => s.ImagePicture)
+        </div>
+        <img src="data:image;base64,@System.Convert.ToBase64String(Model.ImagePicture)" class="img-thumbnail col-lg-2" />
+    </div>
+    <div></div>
+    <div class="form-group">
+        <input type="file" class="form-control" name="ImageName" id="ImageName" />
+        @Html.ValidationMessage("ImageName", "Изберете jpg, png, pdf файл", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Промени" />
+        @Html.ActionLink("Пропусни", "Index", "Operations", null, new { @class = "btn btn-info" })
+    </div>
+
+
+}
+
+
+
