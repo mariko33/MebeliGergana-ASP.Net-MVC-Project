@@ -1,0 +1,82 @@
+﻿@model MebeliGergana.Models.ViewModels.Admin.PorachkaViewModel
+
+@{
+    ViewBag.Title = "FinishPorachka";
+}
+
+<h2>Промяна на активност на поръчка @Model.Id</h2>
+
+
+    <h4>Избрана поръчка</h4>
+    <hr />
+@using (Html.BeginForm("FinishPorachka","Products",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IzdelieDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IzdelieDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Kolichestvo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Kolichestvo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FinalPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FinalPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PorachkaFullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PorachkaFullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PorachkaPhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PorachkaPhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PorachkaAdress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PorachkaAdress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.IsActive)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <input type="submit" class="btn btn-success" value="Приключи"/>
+        @Html.ActionLink("Пропусни", "Index", "Operations", null, new {@class = "btn btn-info"})
+    </p>
+
+}
+

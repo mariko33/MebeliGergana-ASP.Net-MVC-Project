@@ -272,7 +272,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\User\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Operations\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Spalni.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_CreateEditDeleteProduct.cshtml" />
@@ -305,6 +304,13 @@
     <Content Include="Areas\Admin\Views\Products\DeleteMasi.cshtml" />
     <Content Include="Areas\User\Views\_ViewStart.cshtml" />
     <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Suppliers.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\CreateSupplier.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\EditSupplier.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\DeleteSupplier.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Porachki.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\FinishPorachka.cshtml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

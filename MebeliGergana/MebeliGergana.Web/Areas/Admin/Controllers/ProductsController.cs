@@ -8,6 +8,7 @@ using MebeliGergana.Models.ViewModels;
 using MebeliGergana.Models.ViewModels.Admin;
 using MebeliGergana.Services.AdminSereces;
 using MebeliGergana.Services.Interfaces;
+using PagedList;
 
 namespace MebeliGergana.Web.Areas.Admin.Controllers
 {
@@ -505,22 +506,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//*********************************************************************************************************
 
         [HttpGet]
         public ActionResult GetSuppliers()
@@ -528,5 +514,106 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
             ICollection<SuppliersViewModel> model = this.service.GetSuppliers();
             return this.PartialView(model);
         }
+
+        [HttpGet]
+        public ActionResult Suppliers()
+        {
+            ICollection<SuppliersViewModel> model = this.service.GetSuppliers();
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult CreateSupplier()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateSupplier([Bind(Include = "Name, Telephone")]AddSupplierBindingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.service.AddSupplier(model);
+                return this.RedirectToAction("Suppliers");
+            }
+            return this.RedirectToAction("CreateSupplier");
+        }
+
+        [HttpGet]
+        [Route("EditSupplier/{id}")]
+        public ActionResult EditSupplier(int id)
+        {
+            EditSupplierViewModel model = this.service.EditSupplier(id);
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("EditSupplier/{id}")]
+        public ActionResult EditSupplier([Bind(Include = "Id,Name, Telephone")] EditSupplierBindingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.service.SaveEditSupplier(model);
+                return this.RedirectToAction("Suppliers");
+            }
+            return this.RedirectToAction("EditSupplier");
+        }
+
+        [HttpGet]
+        [Route("DeleteSupplier/{id}")]
+        public ActionResult DeleteSupplier(int id)
+        {
+
+            SuppliersViewModel model = this.service.GetDeleteSuppliersViewModel(id);
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Route("DeleteSupplier/{id}")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSupplier([Bind(Include = "Id")] DeleteSupplierBindingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.service.DeleteSupplier(model);
+                return this.RedirectToAction("Suppliers");
+            }
+            return this.RedirectToAction("DeleteSupplier");
+        }
+
+        [HttpGet]
+        [Route("Porachki")]
+        public ActionResult Porachki(int page=1,int pageSize=3)
+        {
+            ICollection<PorachkaViewModel> model = this.service.GetPorachkiViewMoedel();
+            PagedList<PorachkaViewModel> models = new PagedList<PorachkaViewModel>(model, page, pageSize);
+            return View(models);
+        }
+
+        [HttpGet]
+        [Route("FinishPorachka/{id}")]
+        public ActionResult FinishPorachka(int id)
+        {
+            PorachkaViewModel porachka = this.service.GetPorackaFinish(id);
+            return this.View(porachka);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("FinishPorachka/{id}")]
+        public ActionResult FinishPorachka([Bind(Include = "Id,IsActive")] PorachkaFinishBindingModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                this.service.FinishPorachka(model);
+                return this.RedirectToAction("Porachki");
+            }
+            return this.RedirectToAction("FinishPorachka");
+
+        }
+
     }
 }

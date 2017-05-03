@@ -16,9 +16,9 @@ namespace MebeliGergana.Models.EntityModels
 
         public decimal FinalPrice { get; set; }
 
-        public Supplier Supplier { get; set; }
+        public virtual Supplier Supplier { get; set; }
 
-        public ApplicationUser Client { get; set; }
+        public virtual ApplicationUser Client { get; set; }
 
         //public string PorachkaEmail { get; set; }
 

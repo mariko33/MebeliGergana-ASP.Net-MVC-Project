@@ -2,7 +2,7 @@
 
 
 <p>
-    @Html.ActionLink("Create New", "Create"+(string)ViewBag.Title)
+    @Html.ActionLink("Ново изделие", "Create"+(string)ViewBag.Title)
 </p>
 <table class="table">
     <tr>
@@ -32,9 +32,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit"+ (string)ViewBag.Title, new { id = item.Id }) |
+                @Html.ActionLink("Промяна", "Edit"+ (string)ViewBag.Title, new { id = item.Id }) |
                 @*@Html.ActionLink("Details", "Details"+ (string)ViewBag.Title, new { id = item.Id }) |*@
-                @Html.ActionLink("Delete", "Delete"+ (string)ViewBag.Title, new { id = item.Id })
+                @Html.ActionLink("Изтриване", "Delete"+ (string)ViewBag.Title, new { id = item.Id })
             </td>
         </tr>
     }

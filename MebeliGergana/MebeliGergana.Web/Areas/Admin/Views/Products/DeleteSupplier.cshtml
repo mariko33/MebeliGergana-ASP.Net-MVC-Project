@@ -1,0 +1,22 @@
+﻿@model MebeliGergana.Models.ViewModels.SuppliersViewModel
+@{
+    ViewBag.Title = "DeleteSupplier";
+}
+
+<h2>Изтрий Доставчик</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.HiddenFor(s => s.Id)
+        @Html.LabelFor(s => s.Name)
+        @Html.DisplayFor(s => s.Name, new { @class = "form-control" })
+    </div>
+    
+    <div>
+        <input type="submit" class="btn btn-success" value="Изтрий" />
+        @Html.ActionLink("Пропусни", "Index", "Operations", null, new { @class = "btn btn-info" })
+
+    </div>
+}
+

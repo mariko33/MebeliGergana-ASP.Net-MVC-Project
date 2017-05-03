@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "CreateSupplier";
+}
+
+<h2>Доставчик</h2>
+
+@using (Html.BeginForm("CreateSupplier", "Products", FormMethod.Post, new { @class = "form-group" }))
+{
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">
+    <label for="Name">Име</label>
+    <input class="form-control" type="text" name="Name" id="Name" required="required" />
+</div>
+
+<div class="form-group">
+    <label for="Telephone">Телефон</label>
+    <input class="form-control" type="text" name="Telephone" id="Telephone" required="required" />
+</div>
+ 
+<input type="submit" value="Добави" class="btn btn-success" />
+@Html.ActionLink("Пропусни", "Index", "Operations",null,new {@class="btn btn-info"})
+}
+

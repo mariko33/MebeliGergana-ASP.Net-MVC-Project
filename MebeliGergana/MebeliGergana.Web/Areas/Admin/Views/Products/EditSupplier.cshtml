@@ -1,0 +1,30 @@
+﻿@model MebeliGergana.Models.ViewModels.Admin.EditSupplierViewModel
+@{
+    ViewBag.Title = "EditSupplier";
+}
+
+<h2>Въведи необходимите промени</h2>
+
+@using (Html.BeginForm("EditSupplier", "Products", FormMethod.Post, new {  @class = "form-group" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(s => s.Id, new { @name = "Id" })
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Name)
+        @Html.EditorFor(s => s.Name, new { htmlAttributes = new { @name = "Name", @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(s => s.Telephone)
+        @Html.EditorFor(s => s.Telephone, new { htmlAttributes = new { @class = "form-control", @name = "CatNumber" } })
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Промени" />
+        @Html.ActionLink("Пропусни", "Index", "Operations", null, new { @class = "btn btn-info" })
+    </div>
+
+
+}
+
+
+
+

@@ -1,63 +1,69 @@
 ﻿@model MebeliGergana.Models.ViewModels.DetailsViewModel
 
-<div class="col-md-6">
-    
-    <img src="data:image;base64,@System.Convert.ToBase64String(@Model.ImagePicture)" class="img-thumbnail" id="izdeliqImg"/>
+<div class="row" id="detailsIzdelie">
+    <div class="col-md-6">
 
-    @using (Html.BeginForm("PorachkaClient", "Porachki", new {area = "User"}, FormMethod.Post, new {@class = "form-horizontal"}))
-    {
-@*@Html.HiddenFor(i=>i.Id,new {@name="IzdelieId"})*@
-        @Html.AntiForgeryToken()
+        <img src="data:image;base64,@System.Convert.ToBase64String(@Model.ImagePicture)" class="img-thumbnail" id="izdeliqImg" />
 
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-
-        @Html.HiddenFor(i => i.SupplierId)
-        <input type="text" value="@ViewBag.Title" hidden="hidden" name="Izdelie"/>
-        <input type="text" value="@Model.Id" hidden="hidden" name="IzdelieId"/>
-        <div>
-            @Html.LabelFor(i => i.Type)
-            @Html.DisplayFor(i => i.Type)
-            @Html.HiddenFor(i => i.Type)
-        </div>
-
-        <div>
-            @Html.LabelFor(i => i.Name)
-            @Html.DisplayFor(i => i.Name)
-            @Html.HiddenFor(i => i.Name)
-        </div>
-        <div>
-            @Html.LabelFor(i => i.Color)
-            @Html.DisplayFor(i => i.Color)
-            @Html.HiddenFor(i => i.Color)
-        </div>
-        <div>
-            @Html.LabelFor(i => i.Description)
-            @Html.DisplayFor(i => i.Description)
-            @Html.HiddenFor(i => i.Description)
-        </div>
-        <div>
-            @Html.LabelFor(i => i.Price)
-            @Html.DisplayFor(i => i.Price)
-            @Html.HiddenFor(i => i.Price)
-        </div>
-        <div>
-            <label for="broi">Количество</label>
-            <input type="number" name="Broi" id="broi" required="required"/>
-        </div>
-
-
-        if (User.Identity.IsAuthenticated)
+    </div>
+    <div class="col-md-6">
+        @using (Html.BeginForm("PorachkaClient", "Porachki", new { area = "User" }, FormMethod.Post, new { @class = "form-horizontal" }))
         {
-            @Ajax.ActionLink("Поръчай", "PorachkaClient", "Porachki", null, new AjaxOptions {HttpMethod = "GET", UpdateTargetId = "clientInfo", InsertionMode = InsertionMode.Replace}, new {@class = "btn btn-info"})
+            @*@Html.HiddenFor(i=>i.Id,new {@name="IzdelieId"})*@
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(i => i.SupplierId)
+            <input type="text" value="@ViewBag.Title" hidden="hidden" name="Izdelie" />
+            <input type="text" value="@Model.Id" hidden="hidden" name="IzdelieId" />
+            <div>
+                @Html.LabelFor(i => i.Type)
+                @Html.DisplayFor(i => i.Type)
+                @Html.HiddenFor(i => i.Type)
+            </div>
+
+            <div>
+                @Html.LabelFor(i => i.Name)
+                @Html.DisplayFor(i => i.Name)
+                @Html.HiddenFor(i => i.Name)
+            </div>
+            <div>
+                @Html.LabelFor(i => i.Color)
+                @Html.DisplayFor(i => i.Color)
+                @Html.HiddenFor(i => i.Color)
+            </div>
+            <div>
+                @Html.LabelFor(i => i.Description)
+                @Html.DisplayFor(i => i.Description)
+                @Html.HiddenFor(i => i.Description)
+            </div>
+            <div>
+                @Html.LabelFor(i => i.Price)
+                @Html.DisplayFor(i => i.Price)
+                @Html.HiddenFor(i => i.Price)
+            </div>
+            <div>
+                <label for="broi">Количество</label>
+                <input type="number" name="Broi" id="broi" required="required" />
+            </div>
+
+
+            if (User.Identity.IsAuthenticated)
+            {
+                @Ajax.ActionLink("Поръчай", "PorachkaClient", "Porachki", null, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "clientInfo", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-info" })
+
+            }
+            else
+            {
+                @Html.ActionLink("Поръчай", "Login", "Account", null, new { @class = "btn btn-info" })
+
+            }
+
+            <div id="clientInfo"></div>
 
         }
-        else
-        {
-            @Html.ActionLink("Поръчай", "Login", "Account", null, new {@class = "btn btn-info"})
-            
-        }
 
-        <div id="clientInfo"></div>
-
-    }
+    </div>
+   
 </div>

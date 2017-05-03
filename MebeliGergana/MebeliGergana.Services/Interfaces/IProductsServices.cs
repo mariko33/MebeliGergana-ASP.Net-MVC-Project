@@ -44,5 +44,13 @@ namespace MebeliGergana.Services.Interfaces
         void EditMasi(EditIzdlieBindingModel model);
         DeleteProductViewModel GetDeleteMasaViewModel(int id);
         void DeleteMasi(DeleteIzdelieBindingModel model);
+        void AddSupplier(AddSupplierBindingModel model);
+        EditSupplierViewModel EditSupplier(int id);
+        void SaveEditSupplier(EditSupplierBindingModel model);
+        SuppliersViewModel GetDeleteSuppliersViewModel(int id);
+        void DeleteSupplier(DeleteSupplierBindingModel model);
+        ICollection<PorachkaViewModel> GetPorachkiViewMoedel();
+        PorachkaViewModel GetPorackaFinish(int id);
+        void FinishPorachka(PorachkaFinishBindingModel model);
     }
 }

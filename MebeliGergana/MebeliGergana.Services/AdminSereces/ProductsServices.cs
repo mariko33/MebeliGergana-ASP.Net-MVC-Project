@@ -557,5 +557,74 @@ namespace MebeliGergana.Services.AdminSereces
             this.Context.Masi.Remove(masa);
             this.Context.SaveChanges();
         }
+
+        public void AddSupplier(AddSupplierBindingModel model)
+        {
+            Supplier supplier=new Supplier()
+            {
+                Name = model.Name,
+                Telephone = model.Telephone
+            };
+            this.Context.Suppliers.Add(supplier);
+            this.Context.SaveChanges();
+        }
+
+        public EditSupplierViewModel EditSupplier(int id)
+        {
+            Supplier supplier = this.Context.Suppliers.Find(id);
+            EditSupplierViewModel model = Mapper.Map<Supplier,EditSupplierViewModel>(supplier);
+            return model;
+
+        }
+
+        public void SaveEditSupplier(EditSupplierBindingModel model)
+        {
+            Supplier supplier = this.Context.Suppliers.Find(model.Id);
+            supplier.Name = model.Name;
+            supplier.Telephone = model.Telephone;
+            this.Context.SaveChanges();
+        }
+
+        public SuppliersViewModel GetDeleteSuppliersViewModel(int id)
+        {
+            Supplier supplier = this.Context.Suppliers.Find(id);
+            SuppliersViewModel model = Mapper.Map<Supplier, SuppliersViewModel> (supplier);
+            return model;
+        }
+
+        public void DeleteSupplier(DeleteSupplierBindingModel model)
+        {
+            Supplier supplier = this.Context.Suppliers.Find(model.Id);
+            this.Context.Suppliers.Remove(supplier);
+            this.Context.SaveChanges();
+        }
+
+        public ICollection<PorachkaViewModel> GetPorachkiViewMoedel()
+        {
+            var porachki = this.Context.Porachki;
+            IList<PorachkaViewModel> models = new List<PorachkaViewModel>();
+            foreach (var porachka in porachki)
+            {
+                PorachkaViewModel model = Mapper.Map<Porachka, PorachkaViewModel>(porachka);
+                models.Add(model);
+            }
+
+            return models;
+        }
+
+        public PorachkaViewModel GetPorackaFinish(int id)
+        {
+            Porachka porachka = this.Context.Porachki.Find(id);
+            PorachkaViewModel model = Mapper.Map<Porachka, PorachkaViewModel>(porachka);
+            return model;
+
+        }
+
+        public void FinishPorachka(PorachkaFinishBindingModel model)
+        {
+            Porachka porachka = this.Context.Porachki.Find(model.Id);
+            porachka.IsActive = model.IsActive;
+            this.Context.SaveChanges();
+        }
     }
 }

@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MebeliGergana.Models.EntityModels
+namespace MebeliGergana.Models.BindingModels
 {
-  public class Supplier
+   public class EditSupplierBindingModel
     {
-        public Supplier()
-        {
-           // this.Spalni=new HashSet<Spalnq>();
-        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Telephone { get; set; }
-        //public virtual ICollection<Spalnq>Spalni { get; set; }
     }
 }

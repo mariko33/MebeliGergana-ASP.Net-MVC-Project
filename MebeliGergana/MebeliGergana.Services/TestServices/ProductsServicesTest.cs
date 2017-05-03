@@ -235,5 +235,45 @@ namespace MebeliGergana.Services.TestServices
         {
             throw new NotImplementedException();
         }
+
+        public void AddSupplier(AddSupplierBindingModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public EditSupplierViewModel EditSupplier(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveEditSupplier(EditSupplierBindingModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SuppliersViewModel GetDeleteSuppliersViewModel(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteSupplier(DeleteSupplierBindingModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<PorachkaViewModel> GetPorachkiViewMoedel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PorachkaViewModel GetPorackaFinish(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FinishPorachka(PorachkaFinishBindingModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

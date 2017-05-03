@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/PagedList.css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,20 +25,30 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Начало", "Index", "Home", new { area = "" },null)</li>
+                    <li>@Html.ActionLink("За нас", "About", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Контакти", "Contact", "Home", new { area = "" }, null)</li>
+                    
+                    @if (@User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin Panel", "Index", "Operations", new { area = "Admin" }, null)</li>
+                    }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
+
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <br />
+        <br />
+        <div class="footer navbar-fixed-bottom">
+            <hr />
+            <footer>
+                <p class="text-center">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
@@ -42,3 +56,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

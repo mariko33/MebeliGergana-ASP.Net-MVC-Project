@@ -60,7 +60,7 @@
     </div>
 
     <input type="submit" value="Добави" class="btn btn-success"  />
-    <button class="btn bg-info">@Html.ActionLink("Пропусни", "Index", "Operations")</button>
+    @Html.ActionLink("Пропусни", "Index", "Operations",null, new { @class = "btn btn-info" })
 
 }
 

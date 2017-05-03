@@ -97,9 +97,13 @@
   <ItemGroup>
     <Compile Include="Attributes\ValidateFileAttribute.cs" />
     <Compile Include="BindingModels\DeleteIzdelieBindingModel.cs" />
+    <Compile Include="BindingModels\DeleteSupplierBindingModel.cs" />
     <Compile Include="BindingModels\EditIzdlieBindingModel.cs" />
+    <Compile Include="BindingModels\EditSupplierBindingModel.cs" />
     <Compile Include="BindingModels\IzdeliqBindingModel.cs" />
     <Compile Include="BindingModels\PorachkaBindingModel.cs" />
+    <Compile Include="BindingModels\AddSupplierBindingModel.cs" />
+    <Compile Include="BindingModels\PorachkaFinishBindingModel.cs" />
     <Compile Include="EntityModels\ApplicationUser.cs" />
     <Compile Include="EntityModels\Detska.cs" />
     <Compile Include="EntityModels\Kuhnq.cs" />
@@ -120,7 +124,9 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Admin\DeleteProductViewModel.cs" />
+    <Compile Include="ViewModels\Admin\EditSupplierViewModel.cs" />
     <Compile Include="ViewModels\Admin\FullProductViewModel.cs" />
+    <Compile Include="ViewModels\Admin\PorachkaViewModel.cs" />
     <Compile Include="ViewModels\Admin\ProductViewModel.cs" />
     <Compile Include="ViewModels\DetailsViewModel.cs" />
     <Compile Include="ViewModels\IzdeliqViewModel.cs" />

@@ -1,0 +1,110 @@
+﻿@using PagedList
+@using PagedList.Mvc;
+@model PagedList<MebeliGergana.Models.ViewModels.Admin.PorachkaViewModel>
+
+@*@model IEnumerable<MebeliGergana.Models.ViewModels.Admin.PorachkaViewModel>*@
+
+@{
+    ViewBag.Title = "Porachki";
+}
+
+<h2>Поръчки</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table table-striped">
+    <tr>
+        <th>
+            Номер Поръчка
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IzdelieDescription)*@
+            Описание
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Supplier)*@
+            Доставчик
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Kolichestvo)*@
+            Количество
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.FinalPrice)*@
+            Цена
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PorachkaFullName)*@
+            Име Клиент
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PorachkaPhoneNumber)*@
+            Телефон
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PorachkaAdress)*@
+            Адрес
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IsActive)*@
+            Активност Поръчка
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IzdelieDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kolichestvo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PorachkaFullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PorachkaPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PorachkaAdress)
+        </td>
+
+        @*@Html.DisplayFor(modelItem => item.IsActive)*@
+        @{
+            if (item.IsActive == true)
+            {
+                <td>Активна</td>
+            }
+            else
+            {
+                <td>Не активна</td>
+            }
+        }
+
+        <td>
+            @Html.ActionLink("Приключи", "FinishPorachka", new {id = item.Id})
+            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+        </td>
+    </tr>
+}
+
+</table>
+<div class="col-sm-10">
+    <div class="text-center">
+        <div class="pag">
+        @Html.PagedListPager(Model, page => Url.Action((string) ViewBag.Title, new {page, pageSize = Model.PageSize}))
+            </div>
+    </div>
+</div>

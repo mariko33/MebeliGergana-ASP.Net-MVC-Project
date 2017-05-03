@@ -57,6 +57,9 @@ namespace MebeliGergana.Web.Helpers
 
                 expression.CreateMap<ApplicationUser, CurrentUserViewModel>();
 
+                expression.CreateMap<Supplier, EditSupplierViewModel>();
+                expression.CreateMap<Porachka, PorachkaViewModel>();
+
             });
         }
     }
