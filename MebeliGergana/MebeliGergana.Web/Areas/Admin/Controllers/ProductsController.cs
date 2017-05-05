@@ -44,7 +44,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Route("CreateSpalni")]
         public ActionResult CreateSpalni(
-            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr")] IzdeliqBindingModel model)
+            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr,SupplierId")] IzdeliqBindingModel model)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Route("CreateDetski")]
         public ActionResult CreateDetski(
-            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr")] IzdeliqBindingModel model)
+            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr,SupplierId")] IzdeliqBindingModel model)
         {
             if (ModelState.IsValid)
             {
@@ -203,7 +203,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Route("CreateSekcii")]
         public ActionResult CreateSekcii(
-            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr")] IzdeliqBindingModel model)
+            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr,SupplierId")] IzdeliqBindingModel model)
         {
             if (ModelState.IsValid)
             {
@@ -285,7 +285,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Route("CreatePortmanta")]
         public ActionResult CreatePortmanta(
-            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr")] IzdeliqBindingModel model)
+            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr,SupplierId")] IzdeliqBindingModel model)
         {
             if (ModelState.IsValid)
             {
@@ -368,7 +368,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Route("CreateKuhni")]
         public ActionResult CreateKuhni(
-            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr")] IzdeliqBindingModel model)
+            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr,SupplierId")] IzdeliqBindingModel model)
         {
             if (ModelState.IsValid)
             {
@@ -449,7 +449,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Route("CreateMasi")]
         public ActionResult CreateMasi(
-            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr")] IzdeliqBindingModel model)
+            [Bind(Include = "CatNumber,Color,Description,Price,Name,Razmeri,Type,ImageName,NalichnostBr,SupplierId")] IzdeliqBindingModel model)
         {
             if (ModelState.IsValid)
             {
@@ -512,7 +512,7 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         public ActionResult GetSuppliers()
         {
             ICollection<SuppliersViewModel> model = this.service.GetSuppliers();
-            return this.PartialView(model);
+            return PartialView("_CreateIzdelie",model);
         }
 
         [HttpGet]
@@ -587,7 +587,10 @@ namespace MebeliGergana.Web.Areas.Admin.Controllers
         [Route("Porachki")]
         public ActionResult Porachki(int page=1,int pageSize=3)
         {
+
             ICollection<PorachkaViewModel> model = this.service.GetPorachkiViewMoedel();
+            
+            
             PagedList<PorachkaViewModel> models = new PagedList<PorachkaViewModel>(model, page, pageSize);
             return View(models);
         }

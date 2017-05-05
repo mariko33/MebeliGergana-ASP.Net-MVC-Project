@@ -601,7 +601,7 @@ namespace MebeliGergana.Services.AdminSereces
 
         public ICollection<PorachkaViewModel> GetPorachkiViewMoedel()
         {
-            var porachki = this.Context.Porachki;
+            var porachki = this.Context.Porachki.OrderByDescending(p=>p.Id);
             IList<PorachkaViewModel> models = new List<PorachkaViewModel>();
             foreach (var porachka in porachki)
             {
@@ -625,6 +625,19 @@ namespace MebeliGergana.Services.AdminSereces
             Porachka porachka = this.Context.Porachki.Find(model.Id);
             porachka.IsActive = model.IsActive;
             this.Context.SaveChanges();
+        }
+
+        public ICollection<PorachkaViewModel> GetActivePorachkiViewMoedel()
+        {
+            var porachki = this.Context.Porachki.Where(p=>p.IsActive);
+            IList<PorachkaViewModel> models = new List<PorachkaViewModel>();
+            foreach (var porachka in porachki)
+            {
+                PorachkaViewModel model = Mapper.Map<Porachka, PorachkaViewModel>(porachka);
+                models.Add(model);
+            }
+
+            return models;
         }
     }
 }

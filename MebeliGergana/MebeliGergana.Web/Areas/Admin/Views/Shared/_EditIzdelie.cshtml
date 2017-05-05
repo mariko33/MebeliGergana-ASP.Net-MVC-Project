@@ -3,10 +3,18 @@
 
 <h2>Въведи необходимите промени</h2>
 
-@using (Html.BeginForm("EditSpalni", "Products", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-group" }))
+@using (Html.BeginForm((string)ViewBag.Title, "Products", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-group" }))
 {
+
+
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(s => s.Id, new { @name = "Id" })
+
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+
+
+        <input type="number" value=@Model.Id hidden="hidden"/>
     <div class="form-group">
         @Html.DisplayNameFor(s => s.Name)
         @Html.EditorFor(s => s.Name, new { htmlAttributes = new { @name = "Name", @class = "form-control" } })

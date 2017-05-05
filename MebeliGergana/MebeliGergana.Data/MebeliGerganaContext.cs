@@ -14,6 +14,8 @@ namespace MebeliGergana.Data
         {            
         }
 
+        
+
         public DbSet<Spalnq> Spalni { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Kuhnq> Kuhni { get; set; }
@@ -30,6 +32,8 @@ namespace MebeliGergana.Data
             return new MebeliGerganaContext();
         }
 
+        
+        
     }
 
    

@@ -275,5 +275,10 @@ namespace MebeliGergana.Services.TestServices
         {
             throw new NotImplementedException();
         }
+
+        public ICollection<PorachkaViewModel> GetActivePorachkiViewMoedel()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

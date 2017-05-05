@@ -52,5 +52,6 @@ namespace MebeliGergana.Services.Interfaces
         ICollection<PorachkaViewModel> GetPorachkiViewMoedel();
         PorachkaViewModel GetPorackaFinish(int id);
         void FinishPorachka(PorachkaFinishBindingModel model);
+        ICollection<PorachkaViewModel> GetActivePorachkiViewMoedel();
     }
 }

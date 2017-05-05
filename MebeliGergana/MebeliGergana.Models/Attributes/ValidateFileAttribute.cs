@@ -13,7 +13,7 @@ namespace MebeliGergana.Models.Attributes
         public override bool IsValid(object value)
         {
             
-            string[] allowedFileExtensions = new string[] { ".jpg", ".gif", ".png", ".pdf" };
+            string[] allowedFileExtensions = new string[] { ".jpg", ".gif", ".png", ".jpeg" };
 
             var file = value as HttpPostedFileBase;
 
