@@ -54,9 +54,9 @@ namespace MebeliGergana.Web
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "455095918170761",
-               appSecret: "5d1229efe630100ea10edd213205d3e6");
+            //app.UseFacebookAuthentication(
+            //   appId: "",
+            //   appSecret: "");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
